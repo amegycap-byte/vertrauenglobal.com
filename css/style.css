@@ -1869,3 +1869,188 @@ ul {
     flex-direction: column;
   }
 }
+
+/* ========== CHATBOT ========== */
+#vg-bot {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+#vg-bot-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c9a84c, #b8973f);
+  color: #1b5e20;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(201, 168, 76, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+#vg-bot-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 32px rgba(201, 168, 76, 0.5);
+}
+#vg-bot-btn.hidden { display: none; }
+#vg-bot-btn::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #27ae60;
+  border-radius: 50%;
+  bottom: 4px;
+  right: 4px;
+  border: 2px solid #c9a84c;
+}
+#vg-bot-window {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 380px;
+  height: 560px;
+  max-height: 80vh;
+  max-width: calc(100vw - 48px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 48px rgba(10, 22, 40, 0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+#vg-bot-window.open { display: flex; }
+#vg-bot-header {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+#vg-bot-header-icon { font-size: 1.5rem; }
+#vg-bot-header-title { font-weight: 600; font-size: 0.95rem; }
+#vg-bot-header-sub { font-size: 0.75rem; opacity: 0.8; }
+#vg-bot-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  padding: 0 4px;
+}
+#vg-bot-close:hover { opacity: 1; }
+#vg-bot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8f9fa;
+}
+.vg-bot-msg {
+  max-width: 85%;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: vg-msg-in 0.3s ease;
+}
+@keyframes vg-msg-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.vg-bot-msg-bot {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #2d3436;
+  border-bottom-left-radius: 4px;
+}
+.vg-bot-msg-user {
+  align-self: flex-end;
+  background: #1b5e20;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.vg-bot-qr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 0;
+  animation: vg-msg-in 0.3s ease;
+}
+.vg-bot-qr-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #c9a84c;
+  background: rgba(201, 168, 76, 0.06);
+  color: #1b5e20;
+  font-size: 0.82rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.vg-bot-qr-btn:hover {
+  background: #c9a84c;
+  color: #1b5e20;
+  border-color: #c9a84c;
+}
+#vg-bot-input-area {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  flex-shrink: 0;
+}
+#vg-bot-input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #f8f9fa;
+}
+#vg-bot-input:focus { border-color: #c9a84c; }
+#vg-bot-send {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #c9a84c;
+  border: none;
+  color: #1b5e20;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+#vg-bot-send:hover { background: #b8973f; }
+@media (max-width: 480px) {
+  #vg-bot-window {
+    width: calc(100vw - 32px);
+    height: calc(100vh - 120px);
+    bottom: 0;
+    right: 0;
+  }
+  #vg-bot { bottom: 16px; right: 16px; }
+}
