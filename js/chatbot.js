@@ -180,7 +180,7 @@
 
     addBotMsg("Thank you " + userName + "! Our team will get back to you within 24 hours. 😊");
 
-    var mailto = "mailto:info@vertrauentrading.com?subject=Chatbot%20Lead%20-%20" + encodeURIComponent(userName) + "&body=" + encodeURIComponent(msg);
+    var mailto = "mailto:info@vertrauenglobal.com?subject=Chatbot%20Lead%20-%20" + encodeURIComponent(userName) + "&body=" + encodeURIComponent(msg);
     var link = document.createElement("a");
     link.href = mailto;
     link.click();
